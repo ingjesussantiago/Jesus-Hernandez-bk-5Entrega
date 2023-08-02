@@ -1,5 +1,6 @@
 import express from "express"
 import { __dirname } from "./utils.js"
+import { Server } from "socket.io"
 import productosRouter from "./routers/productos.Router.js"
 import timeProductsRouter from "./routers/homeTimeproducts.Router.js"
 import cartsRouter from "./routers/carts.Router.js"
@@ -11,9 +12,9 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.use(express.static(__dirname + "/public"))
-app.use("/products",productosRouter)
-app.use("/realTimeProducts",timeProductsRouter)
-app.use("/carts",cartsRouter)
+app.use("/products", productosRouter)
+app.use("/realTimeProducts", timeProductsRouter)
+app.use("/carts", cartsRouter)
 
 
 
@@ -27,14 +28,15 @@ app.get("/", (req, res) => {
 })
 
 app.get("/formulario", (req, res) => {
-res.render("formularioProducto")
+    res.render("formularioProducto")
 })
 app.get("/formRealTimeProducts", (req, res) => {
     res.render("formRealTimeProduct")
-    })
-
-
-
-app.listen(8080, () => {
-    console.log("escuchando puerto")
 })
+
+
+
+const httpServer = app.listen(8080, () => {
+    console.log("escuchando puerto con htpp y socket io")
+})
+const socketServer = new Server(httpServer)
