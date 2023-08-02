@@ -8,8 +8,6 @@ const router = Router()
 
 const ManagerProducto = new managerProducto(__dirname + "/productos.json")
 
-
-
 router.get("/", async (req, res) => {
     const productos = await ManagerProducto.getProduct()
     res.render("home", { productos })
