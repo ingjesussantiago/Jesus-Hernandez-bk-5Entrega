@@ -42,43 +42,12 @@ const httpServer = app.listen(PORT, () => {
 })
 const socketServer = new Server(httpServer)
 
-// socketServer.on("connection", () => {
-//     console.log(`cliente conectado a servidor:`);
+socketServer.on("connection", (Socket) => {
+console.log(`cliente conectado a servidor:${Socket.id}`);
 
+      
+Socket.on('disconnect', () => {
+console.log(`Un cliente se ha desconectado:${Socket.id}`)
+ })
 
-
-
-
-// socketServer.on("connection", (Socket) => {
-//     console.log(`cliente conectado a servidor:${Socket.id}`);
-
-    // Escuchar el evento "formSubmission" cuando el cliente envía el formulario
-  // Socket.on("formSubmission", function(formData) {
-  //   console.log("Datos del formulario recibidos:");
-  //   console.log(formData);
-
-    // Puedes realizar aquí cualquier acción adicional con los datos recibidos
-
-    // // Por ejemplo, puedes emitir un evento a todos los clientes para informarles sobre la nueva entrada de formulario
-    // socketServer.emit("newFormSubmission", formData);
-  
-    //   Socket.on('disconnect', () => {
-    //     console.log(`Un cliente se ha desconectado:${Socket.id}`)
-    //   })
-
-    // Socket.on("enviarMensaje",(mensaje)=>{
-    //     console.log(mensaje);
-
-    //     Socket.broadcast.emit("enviarMensaje", mensaje)
-
-    //   })
-
-    //   Socket.emit("enviarMensaje",{
-    //     usuario:"adm",
-    //     mensaje:"bienvenido"
-    //   });
-
-
-
-
-// })
+})
