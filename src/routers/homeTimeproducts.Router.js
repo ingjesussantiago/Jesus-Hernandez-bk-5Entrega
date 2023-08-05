@@ -27,7 +27,12 @@ router.post("/", uploader.single('file'), async (req, res) => {
     producto.thumbnails = `/img/${productopaht}`
 
     const nuevoProducto = await ManagerProducto.addProduct(producto)
-    res.json({ message: "Producto creado", producto: nuevoProducto })
+    // res.json({ message: "Producto creado", producto: nuevoProducto })
+    
+    // io.emit('products', products);
+
+    res.redirect('/realTimeProducts')
+    
 })
 
 router.get("/:idProducto", async (req, res) => {

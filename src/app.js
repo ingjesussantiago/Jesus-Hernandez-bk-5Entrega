@@ -35,16 +35,20 @@ app.get("/formRealTimeProducts", (req, res) => {
 })
   
 const PORT =8080
-
+const products=[]
  
 const httpServer = app.listen(PORT, () => {
     console.log("escuchando puerto con htpp y socket io")
 })
+
+
+
 const socketServer = new Server(httpServer)
 
 socketServer.on("connection", (Socket) => {
 console.log(`cliente conectado a servidor:${Socket.id}`);
 
+socketServer.emit('products', products);
       
 Socket.on('disconnect', () => {
 console.log(`Un cliente se ha desconectado:${Socket.id}`)

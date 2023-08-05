@@ -7,7 +7,7 @@
 
 
 <div>
-  <form method="POST" action="/falta/" enctype="multipart/form-data" >
+  <form method="POST" action="/realTimeProducts" enctype="multipart/form-data" >
 
   <label for="name">Title:</label>
   <input type="text" id="title" name="title" required>
@@ -39,8 +39,8 @@
   <input type="file" id="thumbnails" accept="image/*">
   <br> 
 <img id="imagen-previa" src="#" alt="Vista previa de la imagen">
-<br> --}}
-{{!-- <button type="button" onclick="subirImagen()">Subir imagen</button>  --}}
+<br>
+<button type="button" onclick="subirImagen()">Subir imagen</button>  --}}
 
 
   <button type="submit">Enviar</button>
@@ -48,5 +48,3 @@
 </div>
 
 </div>
-<script src="/socket.io/socket.io.js"></script>
-<script src="js/index.js"></script>

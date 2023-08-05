@@ -1,4 +1,4 @@
-
+console.log("probando index conexccion");
 const socketClient=io()
 
  
