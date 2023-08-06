@@ -1,15 +1,18 @@
-console.log("probando index conexccion");
+
+// console.log("probando index conexccion");
+
 const socketClient=io()
-
  
-socketClient.on("connect",()=>{
-console.log(`conectado al servidor:vista navegador console`)
-
-socketClient.on("disconnect",()=>{
- console.log("perdimos conexion al servidor")
-
-})
-
-})
+// socketClient.on("productos", productos => {
+//     fs.readFile('./src/productos.json', 'utf-8')
+//       .then((data) => {
+//         const productos = JSON.parse(data);
+//         Socket.on('productos', productos);
+    
+//       })
+//       .catch((error) => {
+//         console.error('Error al leer productos.json:', error);
+//       });
+//   })
 
 

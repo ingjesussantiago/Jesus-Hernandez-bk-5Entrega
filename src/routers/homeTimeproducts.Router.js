@@ -2,6 +2,9 @@ import { Router} from "express"
 import { managerProducto } from "../../managerProducto.js"
 import { uploader } from "../utils.js"
 import { __dirname } from "../utils.js"
+import fs from 'fs/promises';
+
+
 
 
 const router = Router()
@@ -10,7 +13,7 @@ const ManagerProducto = new managerProducto(__dirname + "/productos.json")
 
 router.get("/", async (req, res) => {
     const productos = await ManagerProducto.getProduct()
-    res.render("home", { productos })
+    res.render("products", { productos })
     // res.json({ productos })
 })
 
@@ -28,9 +31,8 @@ router.post("/", uploader.single('file'), async (req, res) => {
 
     const nuevoProducto = await ManagerProducto.addProduct(producto)
     // res.json({ message: "Producto creado", producto: nuevoProducto })
+    // console.log(nuevoProducto);
     
-    // io.emit('products', products);
-
     res.redirect('/realTimeProducts')
     
 })
