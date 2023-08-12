@@ -5,17 +5,28 @@ import { __dirname } from "../utils.js"
 import fs from 'fs/promises';
 
 
-
-
 const router = Router()
 
 const ManagerProducto = new managerProducto(__dirname + "/productos.json")
 
 router.get("/", async (req, res) => {
     const productos = await ManagerProducto.getProduct()
-    res.render("products", { productos })
+    res.render("home",{ productos })
     // res.json({ productos })
 })
+
+router.get("/realTimeProductos", (req, res) => {
+    res.render("realTimeProducts")
+})
+
+router.get("/formulario",(req,res)=>{
+    res.render("formularioProducto")
+})
+
+router.get("/formRealTime",(req,res)=>{
+    res.render("formRealTimeProduct")
+})
+
 
 router.post("/", uploader.single('file'), async (req, res) => {
     //  uploader.single("file")
@@ -31,9 +42,9 @@ router.post("/", uploader.single('file'), async (req, res) => {
 
     const nuevoProducto = await ManagerProducto.addProduct(producto)
     // res.json({ message: "Producto creado", producto: nuevoProducto })
-    // console.log(nuevoProducto);
+    console.log(nuevoProducto);
     
-    res.redirect('/realTimeProducts')
+    // res.redirect('/realTimeProductos')
     
 })
 

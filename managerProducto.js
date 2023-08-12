@@ -38,7 +38,7 @@ export class managerProducto {
             if (productoId) {
                 return productoId
             } else {
-                return "producto no existe"
+                return "producto no existe chequeo"
             }
     
     
