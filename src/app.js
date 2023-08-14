@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.static(__dirname + "/public"))
 app.use("/carts", cartsRouter)
 app.use("/products", productosRouter)
-app.use("/", viewRouter )
+app.use("/", viewRouter)
 
 
 
@@ -35,16 +35,23 @@ const httpServer = app.listen(PORT, () => {
 
 const socketServer = new Server(httpServer)
 
-import {managerProducto} from "../managerProducto.js";
+import { managerProducto } from "../managerProducto.js";
 
 const ManagerProductoSocket = new managerProducto(__dirname + "/productos.json")
 
 socketServer.on("connection", async (Socket) => {
     console.log(`cliente conectado a servidor:${Socket.id}`)
 
-const products= await ManagerProductoSocket.getProduct({})
-// console.log(products);
-Socket.emit("enviandoProductos", products)
+
+    const products = await ManagerProductoSocket.getProduct({})
+     socketServer.emit("enviandoProductos", products)
+
+    Socket.on("addProduct", async (obj) => {
+
+    await ManagerProductoSocket.addProduct(obj)
+        
+   
+    })
 
     Socket.on('disconnect', () => {
         console.log(`Un cliente se ha desconectado:${Socket.id}`)

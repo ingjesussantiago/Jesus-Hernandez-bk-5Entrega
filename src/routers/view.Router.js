@@ -27,6 +27,12 @@ router.get("/formRealTime",(req,res)=>{
     res.render("formRealTimeProduct")
 })
 
+router.get("/formularioIo",(req,res)=>{
+    res.render("formularioProductoIo")
+})
+
+
+
 
 router.post("/", uploader.single('file'), async (req, res) => {
     //  uploader.single("file")
