@@ -44,14 +44,22 @@ socketServer.on("connection", async (Socket) => {
 
 
     const products = await ManagerProductoSocket.getProduct({})
-     socketServer.emit("enviandoProductos", products)
+    socketServer.emit("enviandoProductos", products)
 
     Socket.on("addProduct", async (obj) => {
-
-    await ManagerProductoSocket.addProduct(obj)
-        
-   
+        await ManagerProductoSocket.addProduct(obj)
     })
+
+
+    Socket.on("borraProducto",async(obj)=>{
+        await ManagerProductoSocket.delateProductById(obj)
+        
+    })
+
+
+
+
+
 
     Socket.on('disconnect', () => {
         console.log(`Un cliente se ha desconectado:${Socket.id}`)

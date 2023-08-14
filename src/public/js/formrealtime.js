@@ -28,6 +28,21 @@ form.addEventListener("submit", (evt) => {
 
     form.reset();
 
-console.log("enviados");
+// console.log("enviados");
 
  })
+
+ document.getElementById("buttonDelete").addEventListener("click",function(){
+    const borrarinput=document.getElementById("idProducto");
+    const borrarid=parseInt(borrarinput.value);
+    socketClient.emit("borraProducto",borrarid);
+    borrarinput.value="";
+ });
+
+ 
+
+
+
+
+
+ 
