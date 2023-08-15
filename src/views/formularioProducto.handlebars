@@ -33,19 +33,34 @@
 <label for="image">Imagen:</label>
     <input type="file" name="file" id="file" required>
     <br>
-   
- {{!-- <label for="archivo">Selecciona una imagen:</label>
-  <input type="file" id="thumbnails" accept="image/*">
-  <br> 
-<img id="imagen-previa" src="#" alt="Vista previa de la imagen">
-<br> --}}
-{{!-- <button type="button" onclick="subirImagen()">Subir imagen</button>  --}}
+
+<img id="preview" src="#" alt="Vista previa de la imagen" style="max-width: 300px; display: none;">
+
 
 
   <button type="submit">Enviar</button>
 </form>
+
+
 </div>
 
 </div>
+
+<script>
+    // Mostrar vista previa de la imagen seleccionada usando multer como middleware
+    const input = document.querySelector('input[type="file"]');
+    const preview = document.getElementById('preview');
+    
+    input.addEventListener('change', function () {
+      const file = input.files[0];
+      if (file) {
+        preview.style.display = 'block';
+        preview.src = URL.createObjectURL(file);
+      } else {
+        preview.style.display = 'none';
+        preview.src = '#';
+      }
+    });
+  </script>
 
 

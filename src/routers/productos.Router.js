@@ -22,7 +22,8 @@ router.post("/", uploader.single('file'), async (req, res) => {
     const producto = req.body
     const productopaht = req.file.filename
 
-    producto.thumbnails = `/img/${productopaht}`
+    producto.thumbnails =  `/img/${productopaht}`
+    
 
     const nuevoProducto = await ManagerProducto.addProduct(producto)
     // res.json({ message: "Producto creado", producto: nuevoProducto })

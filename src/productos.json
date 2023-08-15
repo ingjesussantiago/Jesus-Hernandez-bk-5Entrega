@@ -1,1 +1,24 @@
-[{"id":1,"title":"jeuss","descripcion":"bfb","code":"1","price":"1","status":"true","stock":"1","category":"energia","thumbnails":"/img/dart.jpg"}]
+[
+    {
+        "id": 1,
+        "title": "jeuss",
+        "descripcion": "bfb",
+        "code": "1",
+        "price": "1",
+        "status": "true",
+        "stock": "1",
+        "category": "energia",
+        "thumbnails": "/img/dart.jpg"
+    },
+    {
+        "id": 2,
+        "title": "jfj",
+        "descripcion": "jfdj",
+        "code": "1",
+        "price": "1",
+        "status": "true",
+        "stock": "1",
+        "category": "energia",
+        "thumbnails": "/img/motor electrico.jpg"
+    }
+]
